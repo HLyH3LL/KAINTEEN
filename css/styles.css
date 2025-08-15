@@ -1,3 +1,6 @@
+p{
+    color: #8C8C8D;
+}
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -18,11 +21,16 @@ body {
 h1 {
     font-size: 20px;
     margin-bottom: 5px;
+    padding-top: 10px;
+    color: #444444;
+}
+.label{
+    color: #8C8C8D;
 }
 .logo {
     width: 150px;
     height: auto;
-    margin: 10px 0;
+    
 }
 p.subtitle {
     font-size: 12px;
@@ -37,6 +45,7 @@ h2 {
     margin-bottom: 15px;
     text-align: left;
     padding-right: 10px;
+    color: #8C8C8D;
 }
 .form-group label {
     display: block;
