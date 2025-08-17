@@ -8,7 +8,6 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: url('../res/T.I.P KainTeen GO!.png') no-repeat center center/cover;
 }
 .container {
     background: rgba(255, 255, 255, 0.95);
@@ -45,7 +44,7 @@ h2 {
     margin-bottom: 15px;
     text-align: left;
     padding-right: 10px;
-    color: #8C8C8D;
+    color: #8C8C8D;;
 }
 .form-group label {
     display: block;

@@ -3,10 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T.I.P KainTeen! - Sign Up</title>
+    <title>T.I.P KainTeen! - Sign In</title>
+    <link rel="shortcut icon" href="/res/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/styles.css">
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        video.bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 5px auto; 
+            max-width: 100px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
+    <video class="bg-video" autoplay loop muted>
+        <source src="/res/bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <div class="container">
         <img src="/res/logo.png" class="logo" alt="Logo">
         <p class="subtitle">From Click to Kain in No Time!</p>
@@ -14,17 +55,17 @@
         <form>
             <div class="form-group">
                 <label for="student-number">Student Number</label>
-                <input type="text" id="student-number" name="student-number" placeholder="7 Digit Student No." class="textfield"  required>
+                <input type="text" id="student-number" name="student-number" placeholder="7 Digit Student No." class="textfield" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter Password" class="textfield"  required>
+                <input type="password" id="password" name="password" placeholder="Enter Password" class="textfield" required>
             </div>
             <button type="submit">Sign In</button>
         </form>
         <p class="signin">Don't have an account? <a href="signUpStudent.html">Sign Up here.</a></p>
     </div>
+
     <script src="/js/script.js"></script>
 </body>
 </html>
-
