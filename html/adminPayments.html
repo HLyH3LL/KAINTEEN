@@ -29,6 +29,13 @@
           <option value="date">Date</option>
           <option value="status">Status</option>
         </select>
+        
+  <label for="filterStatus">Filter by: </label>
+  <select id="filterStatus">
+    <option value="">All</option>
+    <option value="PAID">Paid</option>
+    <option value="UNPAID">Unpaid</option>
+  </select>
       </div>
       <table>
         <thead>
@@ -79,5 +86,6 @@
   </div>
 
   <script src="../js/adminLogout.js"></script>
+  <script src="../js/loadpayments.js"></script>
 </body>
 </html>

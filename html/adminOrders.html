@@ -37,66 +37,52 @@
             <td>ORD-001</td>
             <td>2411...</td>
             <td class="status-paid">PAID</td>
-            <td><button class="btn-view" onclick="openOrderModal()">View</button></td>
+            <td><button class="btn-view" onclick="openOrderModal(1)">View</button></td>
           </tr>
           <tr>
             <td>ORD-002</td>
             <td>2411...</td>
             <td class="status-paid">PAID</td>
-            <td><button class="btn-view" onclick="openOrderModal()">View</button></td>
+            <td><button class="btn-view" onclick="openOrderModal(2)">View</button></td>
           </tr>
           <tr>
             <td>ORD-002</td>
             <td>2411...</td>
             <td class="status-unpaid">UNPAID</td>
-            <td><button class="btn-view" onclick="openOrderModal()">View</button></td>
+            <td><button class="btn-view" onclick="openOrderModal(3)">View</button></td>
           </tr>
           <tr>
             <td>ORD-003</td>
             <td>2411...</td>
             <td class="status-unpaid">UNPAID</td>
-            <td><button class="btn-view" onclick="openOrderModal()">View</button></td>
+            <td><button class="btn-view" onclick="openOrderModal(4)">View</button></td>
           </tr>
           <tr>
             <td>ORD-004</td>
             <td>2411...</td>
             <td class="status-completed">COMPLETED</td>
-            <td><button class="btn-view" onclick="openOrderModal()">View</button></td>
+            <td><button class="btn-view" onclick="openOrderModal(5)">View</button></td>
           </tr>
         </tbody>
       </table>
 
-  <div id="orderModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeOrderModal()">&times;</span>
-      <h1>ORD - 001</h1>
-      <table>
-        <tr>
-          <th>Order ID</th>
-          <th>Student No.</th>
-          <th>Status</th>
-        </tr>
-        <tr>
-          <td>ORD-001</td>
-          <td>2411...</td>
-          <td class="status-paid">PAID</td>
-        </tr>
-      </table>
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeOrderModal()">&times;</span>
+    <h1>ORDER DETAILS</h1>
 
-      <br> <br>
-      <h2>ORDER SUMMARY</h2>
-      <table>
-        <tr><td>Menudo</td><td>65.00</td></tr>
-        <tr><td>Water</td><td>10.00</td></tr>
-        <tr><td>Cupcake</td><td>15.00</td></tr>
-        <tr><td><strong>Total:</strong></td><td><strong>90.00</strong></td></tr>
-      </table>
+    <!-- Order Info -->
+    <table id="order-info"></table>
 
-      <div style="margin-top: 20px;">
-        <button class="btn-return" onclick="closeOrderModal()">Return</button>
-      </div>
+    <br><br>
+    <h2>ORDER SUMMARY</h2>
+    <table id="order-summary"></table>
+
+    <div style="margin-top: 20px;">
+      <button class="btn-return" onclick="closeOrderModal()">Return</button>
     </div>
   </div>
+</div>
 
   <div id="logoutModal" class="modal">
     <div class="modal-content">
