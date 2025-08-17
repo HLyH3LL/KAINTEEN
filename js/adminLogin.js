@@ -34,5 +34,4 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(e)
     showPopup("Please enter username and password.", true);
     return;
   }
-
-  
+}
