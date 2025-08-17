@@ -4,12 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    const email = document.getElementById("email").value.trim();
     const studentNumber = document.getElementById("student-number").value.trim();
     const password = document.getElementById("password").value.trim();
     const confirmPassword = document.getElementById("confirm-password").value.trim();
     const terms = document.getElementById("terms").checked;
 
-  
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showPopup("Please enter a valid email address.", true);
+      return;
+    }
+
     if (!/^[0-9]{7}$/.test(studentNumber)) {
       showPopup("Student number must be exactly 7 digits.", true);
       return;
