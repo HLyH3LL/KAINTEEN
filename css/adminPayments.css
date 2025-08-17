@@ -1,0 +1,55 @@
+.payments {
+      margin: 20px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .payments h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .payments table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .payments th, 
+    .payments td {
+      text-align: left;
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .payments th {
+      font-weight: bold;
+    }
+
+    .status-paid {
+      color: green;
+      font-weight: bold;
+    }
+
+    .status-unpaid {
+      color: red;
+      font-weight: bold;
+    }
+
+    .sort-box {
+  float: right;
+  margin-bottom: 15px; /* ✅ Adds space below the dropdown */
+}
+
+.sort-box select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* ✅ Ensure the table starts below the sort box */
+.payments table {
+  clear: both;
+}

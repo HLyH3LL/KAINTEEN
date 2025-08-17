@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
+  <title>Admin Dashboard - Payments</title>
   <link rel="stylesheet" href="../css/adminDashboard.css">
   <link rel="stylesheet" href="../css/adminLogout.css">
-</head>
+  <link rel="stylesheet" href="../css/adminPayments.css">
 </head>
 <body>
   <div class="sidebar">
@@ -15,15 +15,60 @@
     <a href="adminDashboard.html">Overview</a>
     <a href="adminOrders.html">Orders</a>
     <a href="adminInventory.html">Inventory</a>
-    <a href="adminPayments.html">Payments</a>
+    <a href="adminPayments.html" class="active">Payments</a>
     <a href="adminEarnings.html">Earnings</a>
     <div class="logout" onclick="openModal()">Log out</div>
   </div>
 
+  <div class="main">
+    <div class="payments">
+      <h2>PAYMENTS HISTORY</h2>
+      <div class="sort-box">
+        <label for="sort">Sort by: </label>
+        <select id="sort">
+          <option value="date">Date</option>
+          <option value="status">Status</option>
+        </select>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Student No.</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>MOP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ORD-001</td>
+            <td>2411...</td>
+            <td class="status-paid">PAID</td>
+            <td>08/02/2025</td>
+            <td>GCASH</td>
+          </tr>
+          <tr>
+            <td>ORD-002</td>
+            <td>2411..</td>
+            <td class="status-unpaid">UNPAID</td>
+            <td>08/05/2025</td>
+            <td>Over The Counter</td>
+          </tr>
+          <tr>
+            <td>ORD-003</td>
+            <td>2411..</td>
+            <td class="status-paid">PAID</td>
+            <td>07/25/2025</td>
+            <td>GCASH</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-
-
-    <div id="logoutModal" class="modal">
+  <!-- Logout Modal -->
+  <div id="logoutModal" class="modal">
     <div class="modal-content">
       <h3>Are you sure you want to log out?</h3>
       <div class="modal-buttons">
