@@ -3,16 +3,287 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
+  <title>Admin Dashboard - Inventory Management</title>
   <link rel="stylesheet" href="../css/adminDashboard.css">
   <link rel="stylesheet" href="../css/adminLogout.css">
-</head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Inventory Management Styles */
+    .inventory-section {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .inventory-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .add-product-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .add-product-btn:hover {
+      background: #218838;
+      transform: translateY(-2px);
+    }
+
+    .product-form {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .product-form.active {
+      display: block;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-save {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .btn-cancel {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .btn-edit {
+      background: #ffc107;
+      color: #212529;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-right: 5px;
+    }
+
+    .btn-delete {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .products-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .products-table th,
+    .products-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .products-table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .products-table tr:hover {
+      background: #f8f9fa;
+    }
+
+    .product-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid #ddd;
+    }
+
+    .stock-status {
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .stock-high {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .stock-medium {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .stock-low {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .stock-out {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .search-filter {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .category-filter {
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      min-width: 150px;
+    }
+
+    .no-products {
+      text-align: center;
+      padding: 40px;
+      color: #6c757d;
+      font-style: italic;
+    }
+
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .error-message {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .image-preview {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .file-input-wrapper {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .file-input-wrapper input[type=file] {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .file-input-label {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #6c757d;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .file-input-label:hover {
+      background: #5a6268;
+    }
+  </style>
 </head>
 <body>
   <div class="sidebar">
     <img src="../res/logo.png" alt="Logo">
     <h2>ADMIN</h2>
-    <a href="adminDashboard.html">Overview</a>
+    <a href="adminDashboard.html" class="active">Overview</a>
     <a href="adminOrders.html">Orders</a>
     <a href="adminInventory.html">Inventory</a>
     <a href="adminPayments.html">Payments</a>
@@ -30,10 +301,124 @@
         <h3>Total Orders</h3>
         <p>0</p>
       </div>
+      <div class="card">
+        <h3>Total Products</h3>
+        <p id="total-products">0</p>
+      </div>
+      <div class="card">
+        <h3>Low Stock Items</h3>
+        <p id="low-stock-count">0</p>
+      </div>
     </div>
 
+    <!-- Inventory Management Section -->
+    <div class="inventory-section">
+      <div class="inventory-header">
+        <h2><i class="fas fa-boxes"></i> Inventory Management</h2>
+        <button class="add-product-btn" onclick="toggleProductForm()">
+          <i class="fas fa-plus"></i> Add New Product
+        </button>
+      </div>
+
+      <!-- Success/Error Messages -->
+      <div id="success-message" class="success-message"></div>
+      <div id="error-message" class="error-message"></div>
+
+      <!-- Add/Edit Product Form -->
+      <div id="product-form" class="product-form">
+        <h3 id="form-title">Add New Product</h3>
+        <form id="product-form-element" onsubmit="saveProduct(event)">
+          <input type="hidden" id="edit-product-id" value="">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="product-name">Product Name *</label>
+              <input type="text" id="product-name" required>
+            </div>
+            <div class="form-group">
+              <label for="product-category">Category *</label>
+              <select id="product-category" required>
+                <option value="">Select Category</option>
+                <option value="meals">Meals</option>
+                <option value="snacks">Snacks</option>
+                <option value="drinks">Drinks</option>
+                <option value="school-supplies">School Supplies</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="product-price">Price (₱) *</label>
+              <input type="number" id="product-price" step="0.01" min="0" required>
+            </div>
+            <div class="form-group">
+              <label for="product-stock">Stock Quantity *</label>
+              <input type="number" id="product-stock" min="0" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="product-description">Description *</label>
+            <textarea id="product-description" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="product-image">Product Image</label>
+            <div class="file-input-wrapper">
+              <input type="file" id="product-image" accept="image/*" onchange="previewImage(this)">
+              <label for="product-image" class="file-input-label">
+                <i class="fas fa-upload"></i> Choose Image
+              </label>
+            </div>
+            <img id="image-preview" class="image-preview" alt="Image Preview">
+          </div>
+
+          <div class="form-buttons">
+            <button type="submit" class="btn-save">
+              <i class="fas fa-save"></i> Save Product
+            </button>
+            <button type="button" class="btn-cancel" onclick="cancelEdit()">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="search-filter">
+        <input type="text" id="search-products" class="search-input" placeholder="Search products...">
+        <select id="category-filter" class="category-filter">
+          <option value="">All Categories</option>
+          <option value="meals">Meals</option>
+          <option value="snacks">Snacks</option>
+          <option value="drinks">Drinks</option>
+          <option value="school-supplies">School Supplies</option>
+        </select>
+      </div>
+
+      <!-- Products Table -->
+      <table class="products-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="products-table-body">
+          <!-- Products will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Orders Section -->
     <div class="orders">
-      <h2>Orders</h2>
+      <h2>Recent Orders</h2>
       <table>
         <thead>
           <tr>
@@ -54,12 +439,6 @@
             <td>ORD-002</td>
             <td>2411...</td>
             <td class="status-paid">PAID</td>
-            <td><button class="btn-view">View</button></td>
-          </tr>
-          <tr>
-            <td>ORD-002</td>
-            <td>2411...</td>
-            <td class="status-unpaid">UNPAID</td>
             <td><button class="btn-view">View</button></td>
           </tr>
           <tr>
@@ -100,5 +479,6 @@
   </div>
 
   <script src="../js/adminLogout.js"></script>
+  <script src="../js/adminInventory.js"></script>
 </body>
 </html>
