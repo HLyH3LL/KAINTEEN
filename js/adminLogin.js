@@ -36,12 +36,3 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(e)
   }
 
   
-  if (username === "admin" && password === "12345") {
-    showPopup("Login Successful!");
-    setTimeout(() => {
-      window.location.href = "adminDashboard.html";
-    }, 1500);
-  } else {
-    showPopup("Invalid username or password.", true);
-  }
-});
