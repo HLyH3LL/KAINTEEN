@@ -1,4 +1,4 @@
-// Toggle Password Visibility
+
 function togglePassword() {
   const passwordField = document.getElementById("admin-password");
   if (passwordField.type === "password") {
@@ -35,11 +35,11 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(e)
     return;
   }
 
-  // For demo: accept admin / 12345
+  
   if (username === "admin" && password === "12345") {
     showPopup("Login Successful!");
     setTimeout(() => {
-      window.location.href = "adminDashboard.html"; // redirect page
+      window.location.href = "adminDashboard.html";
     }, 1500);
   } else {
     showPopup("Invalid username or password.", true);
