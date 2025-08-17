@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/adminDashboard.css">
+  <link rel="stylesheet" href="../css/adminLogout.css">
+</head>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="../res/logo.png" alt="Logo">
+    <h2>ADMIN</h2>
+    <a href="adminDashboard.html">Overview</a>
+    <a href="adminOrders.html">Orders</a>
+    <a href="adminInventory.html">Inventory</a>
+    <a href="adminPayments.html">Payments</a>
+    <a href="adminEarnings.html">Earnings</a>
+    <div class="logout" onclick="openModal()">Log out</div>
+  </div>
+
+
+
+
+    <div id="logoutModal" class="modal">
+    <div class="modal-content">
+      <h3>Are you sure you want to log out?</h3>
+      <div class="modal-buttons">
+        <button class="btn btn-yes" onclick="logout()">Yes</button>
+        <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/adminLogout.js"></script>
+</body>
+</html>
