@@ -7,25 +7,80 @@
   <link rel="stylesheet" href="../css/adminDashboard.css">
   <link rel="stylesheet" href="../css/adminLogout.css">
 </head>
-</head>
 <body>
   <div class="sidebar">
     <img src="../res/logo.png" alt="Logo">
     <h2>ADMIN</h2>
     <a href="adminDashboard.html">Overview</a>
-    <a href="adminOrders.html">Orders</a>
+    <a href="adminOrders.html" class="active">Orders</a>
     <a href="adminInventory.html">Inventory</a>
     <a href="adminPayments.html">Payments</a>
     <a href="adminEarnings.html">Earnings</a>
     <div class="logout" onclick="openModal()">Log out</div>
   </div>
 
+  <!-- (here) -->
+  <div class="main">
+    <div class="orders">
+      <h2>ORDERS</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Student No.</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ORD-001</td>
+            <td>2411...</td>
+            <td class="status-paid">PAID</td>
+            <td><a href="adminOrderDetails.html"><button class="btn-view">View</button></a></td>
+          </tr>
+          <tr>
+            <td>ORD-002</td>
+            <td>2411...</td>
+            <td class="status-paid">PAID</td>
+            <td><a href="adminOrderDetails.html"><button class="btn-view">View</button></a></td>
+          </tr>
+          <tr>
+            <td>ORD-002</td>
+            <td>2411...</td>
+            <td class="status-unpaid">UNPAID</td>
+            <td><a href="adminOrderDetails.html"><button class="btn-view">View</button></a></td>
+          </tr>
+          <tr>
+            <td>ORD-003</td>
+            <td>2411...</td>
+            <td class="status-unpaid">UNPAID</td>
+            <td><a href="adminOrderDetails.html"><button class="btn-view">View</button></a></td>
 
+          </tr>
+          <tr>
+            <td>ORD-004</td>
+            <td>2411...</td>
+            <td class="status-completed">COMPLETED</td>
+            <td><a href="adminOrderDetails.html"><button class="btn-view">View</button></a></td>
+          </tr>
+        </tbody>
+      </table>
 
+      <div class="pagination">
+        <button>1</button>
+        <button class="active">2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>...</button>
+        <button>20</button>
+      </div>
+    </div>
+  </div>
+  <!-- end (here) -->
 
-
-  
-    <div id="logoutModal" class="modal">
+  <div id="logoutModal" class="modal">
     <div class="modal-content">
       <h3>Are you sure you want to log out?</h3>
       <div class="modal-buttons">
