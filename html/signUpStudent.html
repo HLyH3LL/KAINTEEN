@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T.I.P KainTeen! - Sign Up</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="shortcut icon" href="/res/logo.png" type="image/x-icon">
+    <!-- ✅ Fixed paths -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="../res/logo.png" type="image/x-icon">
      <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,7 +41,7 @@
         }
         .logo {
             display: block;
-            margin: 0 auto 5px auto; /* Reduced margin-bottom to bring subtitle closer */
+            margin: 0 auto 5px auto;
             max-width: 100px;
         }
         .subtitle {
@@ -52,12 +53,14 @@
     </style>
 </head>
 <body>
+    <!-- ✅ Fixed video path -->
     <video class="bg-video" autoplay loop muted>
-        <source src="/res/bg.mp4" type="video/mp4">
+        <source src="../res/bg.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <div class="container">     
-        <img src="/res/logo.png" class="logo" alt="Logo">
+        <!-- ✅ Fixed logo path -->
+        <img src="../res/logo.png" class="logo" alt="Logo">
         <p class="subtitle">From Click to Kain in No Time!</p>
         <h1>Create Your Account</h1>
         <form>
@@ -78,84 +81,6 @@
             </div>
             <button type="submit">Sign Up</button>
         </form>
+        <!-- ✅ Sign-in page is in same folder, so no change -->
         <p class="signin">Already have an account? <a href="signInStudent.html">Sign in here.</a></p>
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("form");
-
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const studentNumberField = document.getElementById("student-number");
-        const passwordField = document.getElementById("password");
-        const confirmPasswordField = document.getElementById("confirm-password");
-        const termsField = document.getElementById("terms");
-
-        const studentNumber = studentNumberField.value.trim();
-        const password = passwordField.value.trim();
-        const confirmPassword = confirmPasswordField.value.trim();
-        const terms = termsField.checked;
-
-        studentNumberField.required = true;
-        passwordField.required = true;
-        confirmPasswordField.required = true;
-        termsField.required = true;
-
-        if (!/^[0-9]{7}$/.test(studentNumber)) {
-            showPopup(" Student number must be exactly 7 digits.", true);
-            return;
-        }
-
-        if (password.length < 6) {
-            showPopup(" Password must be at least 6 characters long.", true);
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            showPopup(" Passwords do not match.", true);
-            return;
-        }
-
-        if (!terms) {
-            showPopup(" You must agree to the terms of service and privacy policy.", true);
-            return;
-        }
-
-        showPopup(" Account created successfully!");
-        form.reset();
-    });
-
-    function showPopup(message, isError = false) {
-        const popup = document.createElement("div");
-        popup.textContent = message;
-        popup.style.position = "fixed";
-        popup.style.top = "50%";
-        popup.style.left = "50%";
-        popup.style.transform = "translate(-50%, -50%)";
-        popup.style.background = isError ? "#ff4d4d" : "#4CAF50";
-        popup.style.color = "white";
-        popup.style.padding = "15px 25px";
-        popup.style.borderRadius = "8px";
-        popup.style.fontSize = "16px";
-        popup.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
-        popup.style.zIndex = "9999";
-        popup.style.opacity = "0";
-        popup.style.transition = "opacity 0.3s ease";
-
-        document.body.appendChild(popup);
-
-        setTimeout(() => {
-            popup.style.opacity = "1";
-        }, 50);
-
-        setTimeout(() => {
-            popup.style.opacity = "0";
-            setTimeout(() => popup.remove(), 300);
-        }, 2000);
-    }
-});
-
-    </script>
-</body>
-</html>
