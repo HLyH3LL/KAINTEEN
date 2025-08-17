@@ -36,7 +36,7 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(e)
   }
 
   
-  if (username === "admin" && password === "12345") {
+  if (username === "admin.tip.manila" && password === "TIP@1962") {
     showPopup("Login Successful!");
     setTimeout(() => {
       window.location.href = "adminDashboard.html";
