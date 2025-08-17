@@ -6,6 +6,7 @@
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="../css/adminDashboard.css">
   <link rel="stylesheet" href="../css/adminLogout.css">
+  <link rel="stylesheet" href="../css/adminOrders.css">
 </head>
 <body>
   <div class="sidebar">
@@ -19,7 +20,6 @@
     <div class="logout" onclick="openModal()">Log out</div>
   </div>
 
-  <!-- (here) -->
   <div class="main">
     <div class="orders">
       <h2>ORDERS</h2>
@@ -37,48 +37,66 @@
             <td>ORD-001</td>
             <td>2411...</td>
             <td class="status-paid">PAID</td>
-            <td><a href="adminOrderDetails.html"><button class="btn-view">View</button></a></td>
+            <td><button class="btn-view" onclick="openOrderModal()">View</button></td>
           </tr>
           <tr>
             <td>ORD-002</td>
             <td>2411...</td>
             <td class="status-paid">PAID</td>
-            <td><a href="adminOrderDetails.html"><button class="btn-view">View</button></a></td>
+            <td><button class="btn-view" onclick="openOrderModal()">View</button></td>
           </tr>
           <tr>
             <td>ORD-002</td>
             <td>2411...</td>
             <td class="status-unpaid">UNPAID</td>
-            <td><a href="adminOrderDetails.html"><button class="btn-view">View</button></a></td>
+            <td><button class="btn-view" onclick="openOrderModal()">View</button></td>
           </tr>
           <tr>
             <td>ORD-003</td>
             <td>2411...</td>
             <td class="status-unpaid">UNPAID</td>
-            <td><a href="adminOrderDetails.html"><button class="btn-view">View</button></a></td>
-
+            <td><button class="btn-view" onclick="openOrderModal()">View</button></td>
           </tr>
           <tr>
             <td>ORD-004</td>
             <td>2411...</td>
             <td class="status-completed">COMPLETED</td>
-            <td><a href="adminOrderDetails.html"><button class="btn-view">View</button></a></td>
+            <td><button class="btn-view" onclick="openOrderModal()">View</button></td>
           </tr>
         </tbody>
       </table>
 
-      <div class="pagination">
-        <button>1</button>
-        <button class="active">2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-        <button>...</button>
-        <button>20</button>
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeOrderModal()">&times;</span>
+      <h1>ORD - 001</h1>
+      <table>
+        <tr>
+          <th>Order ID</th>
+          <th>Student No.</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>ORD-001</td>
+          <td>2411...</td>
+          <td class="status-paid">PAID</td>
+        </tr>
+      </table>
+
+      <br> <br>
+      <h2>ORDER SUMMARY</h2>
+      <table>
+        <tr><td>Menudo</td><td>65.00</td></tr>
+        <tr><td>Water</td><td>10.00</td></tr>
+        <tr><td>Cupcake</td><td>15.00</td></tr>
+        <tr><td><strong>Total:</strong></td><td><strong>90.00</strong></td></tr>
+      </table>
+
+      <div style="margin-top: 20px;">
+        <button class="btn-return" onclick="closeOrderModal()">Return</button>
       </div>
     </div>
   </div>
-  <!-- end (here) -->
 
   <div id="logoutModal" class="modal">
     <div class="modal-content">
@@ -91,5 +109,6 @@
   </div>
 
   <script src="../js/adminLogout.js"></script>
+  <script src="../js/adminOrders.js"></script>
 </body>
 </html>

@@ -1,0 +1,84 @@
+.btn-add {
+      background-color: green;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #fff;
+      font-weight: bold;
+    }
+    .btn-add:hover {
+      background-color: green;
+    }
+
+    /* Shared Add/Edit Modal Styling */
+    .add-form {
+      width: 350px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+
+    .modal-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center; /* Center ADD ITEM / EDIT ITEM text */
+    }
+
+    .add-form label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .add-form input,
+    .add-form select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+    }
+
+    .btn-submit {
+      margin-top: 20px;
+      background-color: #ffc600; /* Yellow buttons */
+      color: #000;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-submit .plus {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    .btn-submit:hover {
+      background-color: #e6b400;
+    }
+
+    .btn-cancel {
+      background-color: #999;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .btn-cancel:hover {
+      background-color: #777;
+    }
