@@ -14,12 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row['password'])) {
-            // ✅ Set session variables
             $_SESSION['student_number'] = $row['student_number'];
-            $_SESSION['student_name'] = $row['name']; // adjust column name if needed
+            $_SESSION['student_name'] = $row['name']; 
             $_SESSION['loggedin'] = true;
 
-            // ✅ Respond with success + dashboard URL
+        
             echo "success|dashboard.php";
         } else {
             echo "Invalid password.";
