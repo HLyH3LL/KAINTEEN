@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -13,7 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row['password'])) {
-            echo "Customer login successful!";
+            $_SESSION['student_number'] = $row['student_number'];
+            $_SESSION['student_name'] = $row['name']; 
+            $_SESSION['loggedin'] = true;
+
+        
+            echo "success|dashboard.php";
         } else {
             echo "Invalid password.";
         }
