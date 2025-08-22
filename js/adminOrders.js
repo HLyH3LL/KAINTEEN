@@ -44,7 +44,7 @@ function openOrderModal() {
         <tr><td colspan="3"><strong>Total:</strong></td><td><strong>₱${data.total.toFixed(2)}</strong></td></tr>
       `;
       document.getElementById("order-summary").innerHTML = summaryTable;
-
+//mod
       // Show modal
       document.getElementById("orderModal").style.display = "block";
     } catch (error) {
@@ -63,3 +63,4 @@ function openOrderModal() {
       modal.style.display = "none";
     }
   }
+}
