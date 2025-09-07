@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ✅ Send data to PHP
-    fetch("../php/student_signup.php", {  // <-- moved closing parenthesis here
+    
+    fetch("../php/student_signup.php", {  
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({
