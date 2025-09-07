@@ -1,6 +1,13 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
+<?php
 session_start();
 include 'db.php';
+echo "Connected to DB: " . $conn->query("SELECT DATABASE()")->fetch_row()[0];
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $student_number = $_POST['student_number'];

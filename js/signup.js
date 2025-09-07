@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ✅ Send data to PHP
-    fetch("signUpStudent.php", {
+    fetch("../php/student_signup.php", {  // <-- moved closing parenthesis here
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({
@@ -43,27 +43,27 @@ document.addEventListener("DOMContentLoaded", () => {
         password: password
       })
     })
-      .then((response) => response.text())
-      .then((data) => {
-        console.log("Server Response:", data);
+    .then((response) => response.text())
+    .then((data) => {
+      console.log("Server Response:", data);
 
-        if (data.startsWith("success|")) {
-          const [, redirectUrl] = data.split("|");
+      if (data.startsWith("success|")) {
+        const [, redirectUrl] = data.split("|");
 
-          showPopup("Account created successfully! Redirecting...");
-          console.log("Redirecting to:", redirectUrl);
+        showPopup("Account created successfully! Redirecting...");
+        console.log("Redirecting to:", redirectUrl);
 
-          setTimeout(() => {
-            window.location.href = redirectUrl;
-          }, 2000);
-        } else {
-          showPopup(data, true);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        showPopup("Something went wrong. Try again later.", true);
-      });
+        setTimeout(() => {
+          window.location.href = redirectUrl;
+        }, 2000);
+      } else {
+        showPopup(data, true);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      showPopup("Something went wrong. Try again later.", true);
+    });
   });
 
   function showPopup(message, isError = false) {

@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    fetch("studentSignIn.php", {
+    fetch("../php/customer_login.php", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           setTimeout(() => {
             window.location.href = redirectUrl;
-          }, 2000); // wait 2s before redirect
+          }, 2000);
         } else {
           showPopup(data, true);
         }
