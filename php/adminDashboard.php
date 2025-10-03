@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header("Location: ../pages/adminLogin.html");
+    header("Location: ../html/adminLogin.html"); // ✅ fixed path
     exit();
 }
 
-include '../php/db.php';
+include 'db.php';
 
 // Get total items
 $result_items = mysqli_query($conn, "SELECT COUNT(*) AS total_items FROM inventory");
@@ -20,8 +20,6 @@ $low_stock_query = mysqli_query($conn, "SELECT * FROM inventory WHERE stock < 5 
 
 // Get latest 5 items
 $recent_items = mysqli_query($conn, "SELECT * FROM inventory ORDER BY created_at DESC LIMIT 5");
-
-mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,3 +141,6 @@ mysqli_close($conn);
   <script src="../js/adminLogout.js"></script>
 </body>
 </html>
+<?php
+mysqli_close($conn); // ✅ moved to bottom
+?>

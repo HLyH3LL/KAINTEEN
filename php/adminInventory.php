@@ -1,5 +1,5 @@
 <?php
-include '../php/db.php';
+include 'db.php';
 
 // Handle Add Item
 if (isset($_POST['addItem'])) {
