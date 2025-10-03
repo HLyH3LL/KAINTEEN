@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['loggedin'] = true;
 
             $success = true;
-            echo "success|studentDashboard.html";
+            echo "success|studentDashboard.php";
         } else {
             echo "Incorrect password.";
         }
