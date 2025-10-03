@@ -23,11 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $user['password'])) {
             
             $_SESSION['student_number'] = $user['student_number'];
-            $_SESSION['student_name'] = $user['email']; 
-            $_SESSION['loggedin'] = true;
+            $_SESSION['student_name']   = $user['email']; 
+            $_SESSION['loggedin']       = true;
 
             $success = true;
-            echo "success|studentDashboard.html";
+
+            $redirectUrl = "/KAINTEEN/html/studentDashboard.html";
+            echo "success|$redirectUrl";
+
         } else {
             echo "Incorrect password.";
         }
@@ -35,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Student number not found.";
     }
 
-    
+    // log attempt
     $log_stmt = $conn->prepare("INSERT INTO login_history (student_number, success, ip_address) VALUES (?, ?, ?)");
     $log_stmt->bind_param("sis", $student_number, $success, $ip_address);
     $log_stmt->execute();
