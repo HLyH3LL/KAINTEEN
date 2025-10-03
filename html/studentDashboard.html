@@ -1,176 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>T.I.P KainTeen! - Student Dashboard</title>
-  <link rel="shortcut icon" href="../res/logo.png" type="image/x-icon">
-  <link rel="stylesheet" href="../css/studentDashboard.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student Dashboard — TIP KainTeen</title>
+<link rel="shortcut icon" href="../res/logo.png" type="image/x-icon">
+<link rel="stylesheet" href="../css/studentDashboard.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Background Video -->
-  <video class="bg-video" autoplay loop muted>
-    <source src="../res/bg.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  
-  <!-- Header -->
-  <header class="header">
-    <div class="logo-container">
-      <img src="../res/logo.png" alt="KainTeen Logo" class="logo">
-      <h1>KainTeen</h1>
-    </div>
-    <div class="header-actions">
-      <button id="cart-toggle-btn" class="cart-toggle-btn">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count" id="cart-count">0</span>
-      </button>
-      <button id="logout-btn" class="logout-btn">
-        <i class="fas fa-sign-out-alt"></i> Logout
-      </button>
-    </div>
-  </header>
+<!-- Background Video -->
+<video class="bg-video" autoplay muted loop>
+  <source src="../res/bg.mp4" type="video/mp4">
+</video>
 
-  <div class="dashboard-container">
-    <!-- Main Content - Product Menu (Mobile First) -->
-    <div class="main-content">
-      <!-- Search Bar -->
-      <div class="search-section">
-        <div class="search-container">
-          <i class="fas fa-search search-icon"></i>
-          <input type="text" id="search-input" placeholder="Search products..." class="search-input">
+<!-- Top Navbar -->
+<nav class="topbar">
+  <div class="brand">TIP KainTeen</div>
+  <div class="user">
+    <span>Welcome, <strong id="student-number">Student123</strong></span>
+    <a class="btn-ghost" href="../php/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+</nav>
+
+<!-- Main Layout -->
+<main class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <!-- Categories -->
+    <div class="card">
+      <h3>Categories</h3>
+      <ul id="categories">
+        <li data-cat="all" class="cat active">All</li>
+        <!-- Example categories (dynamic in PHP, static here for template) -->
+        <li data-cat="1" class="cat">Meals</li>
+        <li data-cat="2" class="cat">Snacks</li>
+        <li data-cat="3" class="cat">Drinks</li>
+        <li data-cat="4" class="cat">School Supplies</li>
+      </ul>
+    </div>
+
+    <!-- Cart -->
+    <div class="card cart-card">
+      <h3>Your Cart</h3>
+      <div id="cart-items">(Cart items will appear here)</div>
+      <div class="cart-footer">
+        <strong>Total: ₱<span id="cart-total">0.00</span></strong>
+        <button id="checkoutBtn" class="btn-primary">Checkout</button>
+      </div>
+    </div>
+
+    <!-- Order History -->
+    <div class="card">
+      <h3>Order History</h3>
+      <div id="order-history">(Your previous orders will appear here)</div>
+    </div>
+  </aside>
+
+  <!-- Content Section -->
+  <section class="content">
+    <h2>Menu</h2>
+    <div class="grid" id="menu-grid">
+      <!-- Example menu items (static in HTML, dynamic in PHP) -->
+      <article class="menu-card" data-category="1">
+        <img src="../res/image.png" alt="Sample Meal">
+        <div class="menu-body">
+          <h4>Adobo</h4>
+          <p class="muted">Meals</p>
+          <div class="price">₱70.00</div>
+          <div class="actions">
+            <input type="number" min="1" value="1" class="qty" />
+            <button class="btn-add" data-id="1" data-name="Adobo" data-price="50">Add</button>
+          </div>
         </div>
-      </div>
-
-      <!-- Category Tabs -->
-      <div class="category-tabs">
-        <button class="tab-btn active" data-category="meals">Meals</button>
-        <button class="tab-btn" data-category="snacks">Snacks</button>
-        <button class="tab-btn" data-category="drinks">Drinks</button>
-        <button class="tab-btn" data-category="school-supplies">School Supplies</button>
-      </div>
-
-      <!-- Menu Heading -->
-      <h2 class="menu-heading">MENU</h2>
-
-      <!-- Product Grid -->
-      <div id="product-grid" class="product-grid">
-        <!-- Products will be dynamically populated -->
-      </div>
-
-      <!-- Loading Spinner -->
-      <div id="loading-spinner" class="loading-spinner">
-        <i class="fas fa-spinner fa-spin"></i>
-        <p>Loading products...</p>
-      </div>
-    </div>
-
-    <!-- Cart Sidebar (Hidden by default on mobile) -->
-    <div class="cart-sidebar" id="cart-sidebar">
-      <div class="cart-header">
-        <h2>Your Cart</h2>
-        <button id="close-cart-btn" class="close-cart-btn">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
+      </article>
+    
+      <article class="menu-card" data-category="1">
+        <img src="../res/sinigang.jpg" alt="Sample Meal">
+        <div class="menu-body">
+          <h4>Sinigang</h4>
+          <p class="muted">Meals</p>
+          <div class="price">₱80.00</div>
+          <div class="actions">
+            <input type="number" min="1" value="1" class="qty" />
+            <button class="btn-add" data-id="1" data-name="Sinigang" data-price="50">Add</button>
+          </div>
+        </div>
+      </article>
       
-      <!-- Cart Items -->
-      <div class="cart-section">
-        <div id="cart-items" class="cart-items">
-          <!-- Cart items will be dynamically populated -->
-        </div>
-        <div class="cart-total">
-          <strong>Total: ₱<span id="cart-total">0.00</span></strong>
-        </div>
-      </div>
-
-      <!-- Payment Method Section -->
-      <div class="payment-section">
-        <h3>Mode Of Payment</h3>
-        <select id="payment-method" class="payment-select">
-          <option value="">Select MOP</option>
-          <option value="gcash">Gcash</option>
-          <option value="cash">Cash</option>
-        </select>
-        
-        <!-- Gcash Payment Form (hidden by default) -->
-        <div id="gcash-form" class="gcash-form" style="display: none;">
-          <div class="form-group">
-            <label for="gcash-number">Gcash Number:</label>
-            <input type="text" id="gcash-number" placeholder="09XXXXXXXXX" maxlength="11">
-          </div>
-          <div class="form-group">
-            <label for="gcash-name">Account Name:</label>
-            <input type="text" id="gcash-name" placeholder="Full Name">
-          </div>
-          <div class="form-group">
-            <label for="gcash-amount">Amount:</label>
-            <input type="text" id="gcash-amount" readonly>
-          </div>
-          <button id="process-gcash" class="gcash-process-btn">Process Gcash Payment</button>
-        </div>
-      </div>
-
-      <!-- Pickup Time Section -->
-      <div class="pickup-section">
-        <label for="pickup-date">Pick Up Time:</label>
-        <div class="date-time-container">
-          <input type="date" id="pickup-date" class="pickup-date">
-          <input type="time" id="pickup-time" class="pickup-time">
-        </div>
-      </div>
-
-      <!-- Confirm Order Button -->
-      <button id="confirm-order-btn" class="confirm-order-btn" disabled>
-        CONFIRM ORDER
-      </button>
-    </div>
-
-    <!-- Cart Overlay -->
-    <div class="cart-overlay" id="cart-overlay"></div>
-  </div>
-
-  <!-- Order Confirmation Modal -->
-  <div id="order-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Order Confirmation</h2>
-      <div id="order-summary"></div>
-      <div class="modal-buttons">
-        <button id="confirm-final-btn" class="confirm-btn">Confirm Order</button>
-        <button id="cancel-order-btn" class="cancel-btn">Cancel</button>
+      <article class="menu-card" data-category="3">
+    <img src="../res/ice_tea.png" alt="Iced Tea">
+    <div class="menu-body">
+      <h4>Iced Tea</h4> 
+      <p class="muted">Drinks</p>
+      <div class="price">₱25.00</div>
+      <div class="actions">
+        <input type="number" min="1" value="1" class="qty" />
+        <button class="btn-add" data-id="3" data-name="Iced Tea" data-price="25">Add</button>
       </div>
     </div>
-  </div>
+  </article>
 
-  <!-- Payment Processing Modal -->
-  <div id="payment-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Processing Payment</h2>
-      <div id="payment-status">
-        <i class="fas fa-spinner fa-spin"></i>
-        <p>Processing your payment...</p>
+    <article class="menu-card" data-category="1">
+    <img src="../res/cheeseburger.jpg" alt="Cheeseburger">
+    <div class="menu-body">
+      <h4>Cheeseburger</h4>
+      <p class="muted">Snacks</p>
+      <div class="price">₱50.00</div>
+      <div class="actions">
+        <input type="number" min="1" value="1" class="qty" />
+        <button class="btn-add" data-id="2" data-name="Cheeseburger" data-price="50">Add</button>
       </div>
     </div>
-  </div>
+  </article>
+</div>
+  </section>
+</main>
 
-  <!-- Success Modal -->
-  <div id="success-modal" class="modal">
-    <div class="modal-content">
-      <h2>Order Successful!</h2>
-      <div class="success-content">
-        <i class="fas fa-check-circle"></i>
-        <p>Your order has been placed successfully!</p>
-        <p>Order ID: <span id="order-id"></span></p>
-        <p>Pickup Time: <span id="pickup-display"></span></p>
-      </div>
-      <button id="continue-shopping-btn" class="continue-btn">Continue Shopping</button>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="../js/studentDashboard.js"></script>
+<!-- Script -->
+<script src="../js/studentDashboard.js"></script>
 </body>
 </html>
