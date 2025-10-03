@@ -176,3 +176,45 @@
       color: #000;
       font-weight: bold;
     }
+      .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 300px;
+  }
+
+  .modal-buttons {
+    margin-top: 20px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .btn-yes {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+
+  .btn-cancel {
+    background-color: #3498db;
+    color: #fff;
+  }

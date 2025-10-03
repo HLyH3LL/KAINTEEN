@@ -128,15 +128,18 @@ $recent_items = mysqli_query($conn, "SELECT * FROM inventory ORDER BY created_at
   </div>
 
   <!-- Logout Modal -->
-  <div id="logoutModal" class="modal">
-    <div class="modal-content">
-      <h3>Are you sure you want to log out?</h3>
-      <div class="modal-buttons">
-        <button class="btn btn-yes" onclick="logout()">Yes</button>
-        <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
-      </div>
+ <button onclick="openModal()">Log Out</button>
+
+<!-- Logout Modal -->
+<div id="logoutModal" class="modal">
+  <div class="modal-content">
+    <h3>Are you sure you want to log out?</h3>
+    <div class="modal-buttons">
+      <button class="btn btn-yes" onclick="logout()">Yes</button>
+      <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
     </div>
   </div>
+</div>
 
   <script src="../js/adminLogout.js"></script>
 </body>
