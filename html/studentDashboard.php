@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: signInStudent.html");
+    exit;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
