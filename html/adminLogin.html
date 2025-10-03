@@ -86,7 +86,8 @@
           if (result.success) {
             showPopup("Login successful!");
             setTimeout(() => {
-              window.location.href = "adminDashboard.html";
+              // ✅ FIXED: Redirect to pages/adminDashboard.php
+              window.location.href = "adminDashboard.php";
             }, 1500);
           } else {
             showPopup(result.message || "Login failed.", true);
