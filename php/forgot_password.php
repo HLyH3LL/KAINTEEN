@@ -1,38 +1,59 @@
 <?php
+require '../vendor/autoload.php'; 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 include 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $student_no = $_POST['student-number'];
+    $student_number = $_POST['student-number']; // fixed variable name here
     $email = $_POST['email'];
 
     // Check if student exists
-    $stmt = $conn->prepare("SELECT id FROM customers WHERE student_no = ? AND email = ?");
-    $stmt->bind_param("ss", $student_no, $email);
+    $stmt = $conn->prepare("SELECT id FROM customers WHERE student_number = ? AND email = ?");
+    $stmt->bind_param("ss", $student_number, $email); 
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows === 1) {
-        // Generate token
+        // Generate token and expiration
         $token = bin2hex(random_bytes(16));
         $expires = date("Y-m-d H:i:s", strtotime("+1 hour"));
 
-        // Save in DB
-        $stmt = $conn->prepare("UPDATE customers SET reset_token = ?, reset_expires = ? WHERE student_no = ?");
-        $stmt->bind_param("sss", $token, $expires, $student_no);
+        // Store token in DB
+        $stmt = $conn->prepare("UPDATE customers SET reset_token = ?, reset_expires = ? WHERE student_number = ?");
+        $stmt->bind_param("sss", $token, $expires, $student_number); // use correct variable here too
         $stmt->execute();
 
-        // Create reset link (adjust localhost/path to your project)
-        $reset_link = "http://localhost/project/php/reset_password.php?token=" . $token;
+        // Build reset link
+        $reset_link = "http://localhost/KAINTEEN/php/reset_password.php?token=" . $token;
 
-        // Send email
-        $subject = "Password Reset Request";
-        $message = "Click this link to reset your password: " . $reset_link;
-        $headers = "From: no-reply@yourapp.com";
+        // Send Email using PHPMailer
+        $mail = new PHPMailer(true);
 
-        if (mail($email, $subject, $message, $headers)) {
-            echo "Reset link sent to your email.";
-        } else {
-            echo "Failed to send email.";
+        try {
+            // SMTP config
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'mjsolano@tip.edu.ph'; // ✅ Replace with your Gmail
+            $mail->Password   = 'myyl hahq kdeh wbau';  // ✅ App password only
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
+
+            // Email content
+            $mail->setFrom('mjsolano@tip.edu.ph', 'T.I.P KainTeen');
+            $mail->addAddress($email);
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Password Reset Request';
+            $mail->Body    = "Hi,<br><br>Click the link below to reset your password:<br><a href='$reset_link'>$reset_link</a><br><br>This link will expire in 1 hour.";
+
+            $mail->send();
+            echo "<script>alert('Password reset link has been sent to your email.'); window.location.href = '../html/signInStudent.html';</script>";
+        } catch (Exception $e) {
+            echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     } else {
         echo "No account found with that student number and email.";
