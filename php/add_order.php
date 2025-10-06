@@ -12,20 +12,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Get last inserted id
     $lastId = $stmt->insert_id;
+<?php
+session_start();
+$product_id = $_POST['product_id'];
+$quantity = $_POST['quantity'];
 
-    // Generate proper order_code (ORD-001, ORD-002...)
-    $order_code = "ORD-" . str_pad($lastId, 3, "0", STR_PAD_LEFT);
-
-    // Update the temp record with correct order_code
-    $update = $conn->prepare("UPDATE orders SET order_code=? WHERE id=?");
-    $update->bind_param("si", $order_code, $lastId);
-    $update->execute();
-
-    echo json_encode([
-        "success" => true,
-        "order_code" => $order_code,
-        "student_no" => $student_no,
-        "status" => $status
-    ]);
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
 }
-?>
+
+if (isset($_SESSION['cart'][$product_id])) {
+    $_SESSION['cart'][$product_id] += $quantity;
+} else {
+    $_SESSION['cart'][$product_id] = $quantity;
+}
+
+header('Location: student_dashboard.php');
+exit;
