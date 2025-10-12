@@ -1,9 +1,24 @@
 <?php
-session_start();
+ini_set('error_log', __DIR__ . '/checkout_error.log');
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+session_start();
+error_log("Checkout script started");
+
+if (!isset($_SESSION['student_number'])) {
+    error_log("Session student_number not set");
+} else {
+    error_log("Session student_number: " . $_SESSION['student_number']);
+}
+
+if (!isset($_POST['cart'])) {
+    error_log("POST cart data missing or empty");
+} else {
+    error_log("POST cart data received");
+}
+
 
 require_once 'db.php';
 require_once '../vendor/autoload.php';
