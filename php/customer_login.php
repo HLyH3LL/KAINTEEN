@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $success = true;
 
-            $redirectUrl = "/KAINTEEN/html/studentDashboard.html";
+            $redirectUrl = "/KAINTEEN/php/dashboard.php";
             echo "success|$redirectUrl";
 
         } else {
