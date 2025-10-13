@@ -1,0 +1,14 @@
+[12-Oct-2025 23:27:12 Europe/Berlin] ✅ Test log entry: 2025-10-12 23:27:12
+[12-Oct-2025 23:47:50 Europe/Berlin] Checkout script started
+[12-Oct-2025 23:47:50 Europe/Berlin] Session student_number: 4449668
+[12-Oct-2025 23:47:50 Europe/Berlin] POST cart data missing or empty
+[12-Oct-2025 23:48:02 Europe/Berlin] Checkout script started
+[12-Oct-2025 23:48:02 Europe/Berlin] Session student_number: 4449668
+[12-Oct-2025 23:48:02 Europe/Berlin] POST cart data missing or empty
+[13-Oct-2025 01:29:25 Europe/Berlin] ✅ Checkout script started
+[13-Oct-2025 01:29:25 Europe/Berlin] ✅ Cart data received
+[13-Oct-2025 01:29:25 Europe/Berlin] ✅ Order #1 saved
+[13-Oct-2025 01:29:25 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: array * string in C:\xampp\htdocs\KAINTEEN\php\checkout.php:123
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\KAINTEEN\php\checkout.php on line 123
